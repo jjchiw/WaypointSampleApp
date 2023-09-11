@@ -11,6 +11,23 @@ variable "demo_bz_docker" {
   }
 }
 
+variable docker_username {
+  type = string
+  default = dynamic("vault", {
+    "path": "secret/dockerhub"
+    "secret": "/data/username"
+  })
+  sensitive = true
+}
+
+variable docker_password {
+  type = string
+  default = dynamic("vault", {
+    "path": "secret/dockerhub"
+    "secret": "/data/password"
+  })
+  sensitive = true
+}
 
 app "BlazorDemo" {
   build {
@@ -19,6 +36,8 @@ app "BlazorDemo" {
     //     tag = var.demo_bz_docker.tag
     // }
     use "docker" {
+      auth = var.docker_username
+      password= var.docker_password
     }
     registry {
       use "docker" {
