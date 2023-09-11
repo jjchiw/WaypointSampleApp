@@ -14,7 +14,7 @@ variable "demo_bz_docker" {
 variable docker_username {
   type = string
   default = dynamic("vault", {
-    "path": "secret/dockerhub"
+    "path": "secret/data/dockerhub"
     "secret": "/data/username"
   })
   sensitive = true
@@ -23,7 +23,7 @@ variable docker_username {
 variable docker_password {
   type = string
   default = dynamic("vault", {
-    "path": "secret/dockerhub"
+    "path": "secret/data/dockerhub"
     "secret": "/data/password"
   })
   sensitive = true
