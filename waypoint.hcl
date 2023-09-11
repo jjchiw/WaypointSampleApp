@@ -14,10 +14,10 @@ variable "demo_bz_docker" {
 
 app "BlazorDemo" {
   build {
-    use "docker-pull" {
-        image = var.demo_bz_docker.image
-        tag = var.demo_bz_docker.tag
-    }
+    // use "docker-pull" {
+    //     image = var.demo_bz_docker.image
+    //     tag = var.demo_bz_docker.tag
+    // }
     use "docker" {
     }
     registry {
